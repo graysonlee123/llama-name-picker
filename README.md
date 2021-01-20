@@ -77,3 +77,7 @@ module.exports = {
   ...
 }
 ```
+
+# References
+
+Based off of [this guide](https://www.freecodecamp.org/news/how-to-create-a-vue-js-app-using-single-file-components-without-the-cli-7e73e5b8244f/) by [Brandon](https://www.freecodecamp.org/news/author/brandon/)
