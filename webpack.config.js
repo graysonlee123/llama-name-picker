@@ -1,9 +1,15 @@
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const webpack = require('webpack')
 
 module.exports = {
   entry: './src/main.js',
   mode: 'development',
+  devServer: {
+    // Automatically opens the application in the browser
+    open: true,
+    hot: true,
+  },
   module: {
     rules: [
       {
@@ -33,5 +39,6 @@ module.exports = {
       template: './src/index.html',
     }),
     new VueLoaderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
   ],
 }

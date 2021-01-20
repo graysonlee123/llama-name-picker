@@ -1,16 +1,21 @@
 <template>
   <div id="app">
     <navbar></navbar>
-    {{ message }}
+    <input></input>
+    <p>
+      {{ message }}
+    </p>
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue'
+import Input from './components/Input.vue'
 
 export default {
   components: {
     Navbar,
+    Input
   },
   data() {
     return {
