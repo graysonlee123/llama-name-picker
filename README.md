@@ -1,6 +1,9 @@
 # Dependencies Explained
 
 **vue**: The JavaScript framework
+**postcss**: Uses JavaScript plugins to automate routine CSS operations
+**autoprefixer**: Prefixes our CSS with necessary prefixes like `-ms-transform`
+**tailwindcss**: The official Tailwind CSS library
 **vue-loader**: and **vue-template-compiler**: Used to convert our `*.vue` files into JavaScript
 **webpack**: Code bundler
 **webpack-cli**: Needed to run Webpack commands
@@ -54,8 +57,18 @@ module.exports = {
         use: 'vue-loader',
       },
       {
-        test: '/.css$/',
-        use: ['vue-style-loader', 'css-loader'],
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              esModule: false,
+              importLoaders: 1,
+            },
+          },
+          'postcss-loader',
+        ],
       },
     ],
   },
@@ -68,16 +81,14 @@ Last, we add our plugins, which are tied to the rules we wrote:
 ```js
 module.exports = {
   ...
-    plugins: [
+  plugins: [
     new HTMLWebpackPlugin({
       template: './src/index.html',
     }),
     new VueLoaderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new CleanWebpackPlugin(),
   ],
   ...
 }
 ```
-
-# References
-
-Based off of [this guide](https://www.freecodecamp.org/news/how-to-create-a-vue-js-app-using-single-file-components-without-the-cli-7e73e5b8244f/) by [Brandon](https://www.freecodecamp.org/news/author/brandon/)
