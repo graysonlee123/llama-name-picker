@@ -1,38 +1,32 @@
 <template>
   <div id="app">
     <navbar></navbar>
-    <input></input>
-    <p>
-      {{ message }}
-    </p>
+    <hero></hero>
+    <featured></featured>
+    <div class="container mx-auto my-8">
+      <description-list></description-list>
+    </div>
   </div>
 </template>
 
 <script>
+import Hero from './components/Hero.vue'
+import Featured from './components/Featured.vue'
 import Navbar from './components/Navbar.vue'
-import Input from './components/Input.vue'
+import DescriptionList from './components/DescriptionList.vue'
 
 export default {
   components: {
+    Hero,
+    Featured,
     Navbar,
-    Input
-  },
-  data() {
-    return {
-      message: 'Hello world',
-    }
+    DescriptionList,
   },
 }
 </script>
 
 <style>
-#app {
-  font-size: 1rem;
-  font-family: 'Helvetica', 'Roboto', sans-serif;
-  color: blue;
-}
-
 body {
-  background-color: tomato;
+  background-color: lightblue;
 }
 </style>
